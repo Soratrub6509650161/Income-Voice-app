@@ -34,3 +34,10 @@ export interface FirebaseAPI {
   updateInFirestore: (id: string, data: FirestoreData) => Promise<boolean>;
   deleteFromFirestore: (id: string) => Promise<boolean>;
 }
+
+declare global {
+  interface Window {
+    webkitSpeechRecognition: any;
+    SpeechRecognition: any;
+  }
+}

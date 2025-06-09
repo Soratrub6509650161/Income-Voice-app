@@ -63,3 +63,5 @@ const StatusIndicators: React.FC<StatusIndicatorsProps> = ({
     </>
   );
 };
+
+export default StatusIndicators;

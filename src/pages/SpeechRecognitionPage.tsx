@@ -152,31 +152,31 @@ const SpeechRecognitionPage: React.FC = () => {
   return (
     <div>
       <h1>Speech Recognition Page</h1>
-      {/* Add your UI components here, e.g.: */}
-      <MicrophoneButton
-        isListening={isListening}
-        onClick={handleMicClick}
-        disabled={initializingFirebase}
-      />
       <StatusIndicators
-        isSupported={isSupported}
-        isListening={isListening}
-        error={error}
         firebaseReady={firebaseReady}
         initializingFirebase={initializingFirebase}
+        isSupported={isSupported}
+      />
+      <ExamplePhrases />
+      <MicrophoneButton
+        isListening={isListening}
+        isSupported={isSupported}
+        onMicClick={handleMicClick}
+        interimText={interimText}
+        onClick={handleMicClick}
+        disabled={!isSupported}
       />
       <ResultsList
         results={results}
-        interimText={interimText}
+        savingIds={savingIds}
+        firebaseReady={firebaseReady}
         onStartEditing={startEditing}
         onCancelEditing={cancelEditing}
         onSaveEdit={saveEdit}
         onEditTextChange={handleEditTextChange}
         onSaveToDatabase={saveToDatabase}
-        savingIds={savingIds}
-        testSpeech={testSpeech}
+        onDeleteFromDatabase={() => {}} // Provide your delete handler if available
       />
-      <ExamplePhrases />
       <button onClick={clearResults}>Clear Results</button>
     </div>
   );
